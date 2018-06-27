@@ -15,10 +15,6 @@ You must link your mail to restore access to your account.
 MD5 hash + salt are used to store password.
 
 
-## Usage
-* Specify connection string or move database file to folder with exe file
-* Compile
-
 ## Used packages and libs:
 * Entity Framework 6.0
 * FluentValidation 7.5.2 - https://github.com/JeremySkinner/FluentValidation
