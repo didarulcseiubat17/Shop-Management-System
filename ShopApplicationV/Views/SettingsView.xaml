@@ -1,0 +1,56 @@
+﻿<Controls:MetroWindow x:Class="ShopApplicationV.Views.SettingsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopApplicationV.Views"
+        mc:Ignorable="d"
+        Title="SettingsView" Height="450" Width="400"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro">
+
+    <Grid>
+        <StackPanel Margin="10">
+            <StackPanel.Resources>
+
+                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MetroTextBlock}">
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+
+                <Style TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
+                    <Setter Property="FontSize" Value="20"></Setter>
+                </Style>
+
+            </StackPanel.Resources>
+
+            <TextBlock>Regular customer require sum</TextBlock>
+            <Controls:NumericUpDown Value="{Binding RequiredCustomer, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}"  >
+            </Controls:NumericUpDown>
+
+            <TextBlock>Discont for regular customers</TextBlock>
+            <Controls:NumericUpDown Value="{Binding DiscontRegularCustomer, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+            </Controls:NumericUpDown>
+            <TextBlock>SMTP Host</TextBlock>
+            <TextBox Text="{Binding Host}" MaxLength="60"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="smtp.gmail.com">
+            </TextBox>
+            <TextBlock>Email</TextBlock>
+            <TextBox Text="{Binding Email}" MaxLength="60"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Email">
+            </TextBox>
+            <TextBlock>Password</TextBlock>
+            <PasswordBox  Name="passbox" MaxLength="60" FontSize="20"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Enter the Password">
+            </PasswordBox>
+
+            <Button Margin="0,45,0,0" Width="150" Height="40" FontSize="20" Command="{Binding Save}" 
+                    CommandParameter="{Binding ElementName=passbox}">Save</Button>
+
+
+
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>

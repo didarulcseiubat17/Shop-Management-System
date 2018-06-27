@@ -1,0 +1,59 @@
+﻿<Controls:MetroWindow x:Class="ShopApplicationV.Views.OrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopApplicationV.Views"
+        mc:Ignorable="d"
+        Width="400"
+        Height="480"
+        Title="OrderView"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+        
+        <StackPanel Margin="10">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type DatePicker}">
+                    <Setter Property="Height" Value="33"/>
+                    <Setter Property="Margin" Value="0, 0, 0, 10"/>
+                    <Setter Property="FontSize" Value="20"></Setter>
+                    <Setter Property="FontSize" Value="15"></Setter>
+                </Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+
+                <Style TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
+                    <Setter Property="FontSize" Value="20"></Setter>
+                </Style>
+
+
+            </StackPanel.Resources>
+            <TextBlock>OrderID</TextBlock>
+            <TextBox Name="OrderID" IsEnabled="False"  Text="{Binding Entity.OrderID, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="60">
+            </TextBox>
+            <TextBlock>Customer</TextBlock>
+            <ComboBox ItemsSource="{Binding Customers}" SelectedItem="{Binding Entity.Customer}" DisplayMemberPath="DisplayName"></ComboBox>
+            <TextBlock>Manager</TextBlock>
+            <ComboBox ItemsSource="{Binding Managers}" SelectedItem="{Binding Entity.Manager}" DisplayMemberPath="DisplayName"></ComboBox>
+
+
+
+            <TextBlock>Creation Date</TextBlock>
+            <Controls:DateTimePicker FontSize="20" SelectedDate="{Binding Entity.CreationDate, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+            </Controls:DateTimePicker>
+            <TextBlock>Ship Date</TextBlock>
+            <Controls:DateTimePicker FontSize="20" SelectedDate="{Binding Entity.ShipDate, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+            <DockPanel>
+                <Button Name="CloseOrder" DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="2" Margin="0,20,0,0" Width="150" Height="40" FontSize="20" Command="{Binding CloseOrder}">Close Order</Button>
+                <Button Name="CloseButton" DockPanel.Dock="Bottom" BorderBrush="Black" BorderThickness="2" Margin="0,20,0,0" Width="150" Height="40" FontSize="20" Command="{Binding Close}">Save</Button>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+
+</Controls:MetroWindow>

@@ -1,0 +1,79 @@
+﻿<Controls:MetroWindow x:Class="ShopApplicationV.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopApplicationV.Views"
+        mc:Ignorable="d"
+        Title="LoginView" Height="500" Width="450"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Controls:MetroTabControl Margin="10,10,0,10">
+            <Controls:MetroTabItem Header="Login" HorizontalAlignment="Left" Width="77">
+                <AdornerDecorator>
+                    <StackPanel Margin="10,10,10,10">
+                        <TextBlock>Login</TextBlock>
+                        <TextBox Text="{Binding Email}" MaxLength="60"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Enter your Login">
+                        </TextBox>
+                        <TextBlock>Password</TextBlock>
+                        <PasswordBox  Name="passentr" MaxLength="60" FontSize="20"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Enter the Password">
+                        </PasswordBox>
+                        <Button BorderBrush="Black" BorderThickness="0" Margin="280,0,0,0" Width="100" Height="20" FontSize="10" Command="{Binding Reset}"
+                            CommandParameter="{Binding Email}">Reset password</Button>
+                        <Button BorderBrush="Black" BorderThickness="2" Margin="0,20,0,0" Width="150" Height="40" FontSize="20" Command="{Binding Auth}"
+                            CommandParameter="{Binding ElementName=passentr}">Login</Button>
+                    </StackPanel>
+                </AdornerDecorator>
+            </Controls:MetroTabItem>
+            
+            <Controls:MetroTabItem Header="Registration">
+                <AdornerDecorator>
+                    <StackPanel Margin="10">
+                        <TextBlock>Email</TextBlock>
+                        <TextBox Text="{Binding Email, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="60"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Enter your Email">
+                        </TextBox>
+                        <TextBlock>Password</TextBlock>
+                        <PasswordBox ToolTip="Minimum eight characters, at least one letter and one number" Name="passbox" FontSize="20" MaxLength="60" 
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Enter the Password">
+                        </PasswordBox>
+                        <TextBlock>First Name</TextBlock>
+                        <TextBox Text="{Binding Name, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="60"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Enter First Name">
+                        </TextBox>
+                        <TextBlock>Last Name</TextBlock>
+                        <TextBox Text="{Binding SurName, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="60"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Enter Last Name">
+                        </TextBox>
+                        <TextBlock>Birth Date</TextBlock>
+                        <DatePicker FontSize="20" SelectedDate="{Binding BirthDate, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Button HorizontalAlignment="Center" Margin="0,20,0,0" Width="90" Height="40" 
+                            FontSize="20" 
+                            Command="{Binding Create}"
+                            CommandParameter="{Binding ElementName=passbox}">Create</Button>
+                    </StackPanel>
+                </AdornerDecorator>
+            </Controls:MetroTabItem>
+        </Controls:MetroTabControl>
+    </Grid>
+</Controls:MetroWindow>

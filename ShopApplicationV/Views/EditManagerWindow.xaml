@@ -1,0 +1,49 @@
+﻿<Controls:MetroWindow x:Class="ShopApplicationV.Views.ManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopApplicationV.Views"
+        mc:Ignorable="d"
+        Title="ManagerView" Height="430" Width="360"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro">
+    <StackPanel Margin="10">
+        <StackPanel.Resources>
+
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+
+            <Style TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="FontSize" Value="20"></Setter>
+            </Style>
+
+            
+            
+        </StackPanel.Resources>
+        <TextBlock>First Name</TextBlock>
+        <TextBox Text="{Binding Entity.Name, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="60"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Enter First Name">
+        </TextBox>
+        <TextBlock>Last Name</TextBlock>
+        <TextBox Text="{Binding Entity.SurName, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="60"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Enter Last Name">
+        </TextBox>
+        <TextBlock>Salary</TextBlock>
+        <TextBox MaxLength="13" Text="{Binding Entity.Salary, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged,StringFormat=N4}"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="Enter salary">
+        </TextBox>
+        <Controls:ToggleSwitch ContentDirection="RightToLeft" IsChecked="{Binding Entity.isAdmin}"  OnLabel="Admin" OffLabel="Manager">
+            <Controls:ToggleSwitch.Header>
+                <TextBlock Text="Permissions" FontSize="20"/>
+            </Controls:ToggleSwitch.Header>
+        </Controls:ToggleSwitch>
+        <TextBlock>BirthDate</TextBlock>
+        <DatePicker FontSize="20" SelectedDate="{Binding Entity.BirthDate, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button HorizontalAlignment="Center" Margin="0,20,0,0" Width="90" Height="40" FontSize="20" Command="{Binding Close}">Save</Button>
+    </StackPanel>
+</Controls:MetroWindow>
