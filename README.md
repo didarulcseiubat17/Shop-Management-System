@@ -8,18 +8,22 @@ System supports CRUD operations on:
   * Products
   * Orders
   
-System allows to create order and calculate order sum according to added products. 
+System allows to create order and calculate order sum according to added products.
+
 You must link your mail to restore access to your account.
+
 MD5 hash + salt are used to store password.
 
 ## Used packages and libs:
-Entity Framework 6.0
-FluentValidation 7.5.2 - https://github.com/JeremySkinner/FluentValidation
-MahApps.Metro - https://mahapps.com/
-SQLite - https://www.sqlite.org/
+* Entity Framework 6.0
+* FluentValidation 7.5.2 - https://github.com/JeremySkinner/FluentValidation
+* MahApps.Metro - https://mahapps.com/
+* SQLite - https://www.sqlite.org/
 
 Default user:
+
 username : admin
+
 password : admin
 
 ## Todo:
