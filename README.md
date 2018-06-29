@@ -12,20 +12,25 @@ System allows to create order and calculate order sum according to added product
 
 You must link your mail to restore access to your account.
 
-MD5 hash + salt are used to store password.
+SHA512 hash + salt are used to store password.
 
+## Usage
+
+ * Run sln. 
+ * Compile
+ * Login as default user 
+ 
+Default user:
+
+username : admin
+
+password : admin
 
 ## Used packages and libs:
 * Entity Framework 6.0
 * FluentValidation 7.5.2 - https://github.com/JeremySkinner/FluentValidation
 * MahApps.Metro - https://mahapps.com/
 * SQLite - https://www.sqlite.org/
-
-Default user:
-
-username : admin
-
-password : admin
 
 ## Todo:
 * Rework everything related with database. 
